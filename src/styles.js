@@ -29,7 +29,8 @@ export const ContainerLogin = styled.div`
     outline: none;
     border: solid #000;
     border-width: 0 0 1px 0;
-    width: 250px;
+    width: 300px;
+    color: #8c8c8c;
   }
 
   .formLoginContainer {
