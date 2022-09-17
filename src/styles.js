@@ -64,6 +64,11 @@ export const Button = styled.button`
   width: 100px;
   font-size: 20px;
   border-radius: 10px;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 `;
 
 export const FormSignUpHeader = styled.div`
@@ -165,5 +170,47 @@ export const NavbarComponent = styled.div`
     color: white;
     padding: 10px;
     border-radius: 10px;
+  }
+`;
+
+export const DeviceCard = styled.div`
+  img {
+    width: 200px;
+  }
+
+  .userDeviceCard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border: solid green;
+    width: 500px;
+    background-color: #e1e1e1;
+  }
+
+  .deviceImage {
+    grid-area: 1 / 1 / 2 / 2;
+    border: solid red;
+    background-color: white;
+  }
+
+  .deviceData {
+    grid-area: 1 / 2 / 2 / 3;
+    border: solid blue;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const DeviceList = styled.div`
+  border: solid yellow;
+  div {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
   }
 `;
