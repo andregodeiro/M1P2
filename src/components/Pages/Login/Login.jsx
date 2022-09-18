@@ -1,4 +1,5 @@
 import { Button, ContainerLogin } from "../../../styles";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   return (
@@ -13,11 +14,15 @@ export const Login = () => {
             <input type="password" />
           </div>
           <div className="buttons">
-            <Button>acessar</Button>
-            <a href="./">crie uma conta no connectlab</a>
+            <Button>
+              <Link to="/home">acessar</Link>
+            </Button>
+            <Link to="/cadastro">crie uma conta no connectlab</Link>
           </div>
         </form>
       </div>
     </ContainerLogin>
   );
 };
+
+export default Login;
