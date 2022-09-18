@@ -214,3 +214,90 @@ export const DeviceList = styled.div`
     justify-content: center;
   }
 `;
+
+export const SearchBar = styled.div`
+  border: solid purple;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+
+  input {
+    width: 120vh;
+    border: none;
+    background-color: #e1e1e1;
+    padding: 10px;
+    outline: none;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-radius: 10px;
+  }
+
+  .searchButton {
+  }
+`;
+
+export const UserProfileCard = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  padding: 10px;
+  text-align: center;
+
+  h2 {
+    margin-top: 20px;
+  }
+
+  .profileCard {
+    background-color: #e0e0e0;
+    width: 500px;
+    margin: 10px;
+  }
+
+  .profileData {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border: solid red;
+    margin: 50px;
+    color: #707070;
+  }
+
+  .userImage {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .userImage img {
+    width: 150px;
+  }
+
+  .userData {
+    grid-area: 1 / 2 / 2 / 3;
+    border: solid blue;
+    border: solid blue;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .userAdress {
+    border: solid yellow;
+    margin-bottom: 50px;
+  }
+  .userAdress p {
+    padding: 5px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+`;
