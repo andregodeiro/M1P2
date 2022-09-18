@@ -35,9 +35,9 @@ export const UserProfile = () => {
 
           <div className="buttons">
             <Button>
-              <a href="">Editar</a>
+              <a href="./">Editar</a>
             </Button>
-            <a href="">Sair</a>
+            <a href="./">Sair</a>
           </div>
         </div>
       </UserProfileCard>
