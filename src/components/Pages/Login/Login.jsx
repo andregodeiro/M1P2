@@ -1,36 +1,36 @@
 import { Button, ContainerLogin } from "../../../styles";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 export const Login = () => {
-  const adminUser = {
-    email: "admin@admin.com",
-    password: "admin123",
-  };
+  const schema = yup.object().shape({
+    email: yup.string().required(),
+    password: yup.string().min(8).required(),
+  });
 
-  const [user, setUser] = useState({ name: "", email: "" });
-  const [error, setError] = useState("");
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  const LoginFunc = (details) => {
-    console.log(details);
-  };
-
-  const Logout = () => {
-    console.log("Logout");
+  const userLogin = (user) => {
+    console.log(user);
   };
 
   return (
     <ContainerLogin>
       <div>
         <img src="https://i.imgur.com/pTj5VAl.png" alt="" />
-        <form className="formLoginContainer">
+        <form onSubmit={handleSubmit(userLogin)} className="formLoginContainer">
           <div className="labelInput">
             <label htmlFor="email" name="email" id="email">
               e-mail
             </label>
-            <input type="text" />
+            <input type="text" {...register("email")} />
             <label htmlFor="password">senha</label>
-            <input type="password" name="password" id="password" />
+            <input type="password" {...register("password")} />
           </div>
           <div className="buttons">
             <Button>

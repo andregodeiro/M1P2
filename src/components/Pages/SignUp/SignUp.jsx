@@ -1,15 +1,40 @@
 import { Button, FormSignUp, FormSignUpHeader } from "../../../styles";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 export const SignUp = () => {
-  const { register, handleSubmit, setValue, setFocus } = useForm();
+  //Validação YUP
+  const schema = yup.object().shape({
+    name: yup.string().min(2).required(),
+    email: yup.string().email().required(),
+    avatar: yup.string().url(),
+    password: yup.string().min(8, "mínimo 8 caracteres").required(),
+    passwordConfirm: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "As senhas devem ser idênticas!"),
+    telephone: yup.number(),
+    cep: yup.string().min(8, "Insira um CEP válido").required(),
+    adress: yup.string().required(),
+    adressNumber: yup.number().required(),
+    district: yup.string().required(),
+    city: yup.string().required(),
+    state: yup.string().required(),
+    comp: yup.string(),
+  });
 
-  const onSubmit = (e) => {
-    console.log(e);
+  const { register, handleSubmit, setValue, setFocus, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  //user = e (parâmetro)
+  const newUser = (user) => {
+    console.log(user);
   };
 
-  const catchCep = (e) => {
-    const cep = e.target.value.replace(/\D/g, "");
+  const catchCep = (user) => {
+    const cep = user.target.value.replace(/\D/g, "");
+    console.log(errors);
     console.log(cep);
     fetch(`https://viacep.com.br/ws/${cep}/json/`).then((res) =>
       res.json().then((data) => {
@@ -33,7 +58,7 @@ export const SignUp = () => {
       </FormSignUpHeader>
       <div>
         <FormSignUp>
-          <form onSubmit={handleSubmit(onSubmit)} className="formSignUp">
+          <form onSubmit={handleSubmit(newUser)} className="formSignUp">
             <div className="signUpData1">
               <label htmlFor="">Nome Completo</label>
               <input type="text" {...register("name")} />
@@ -57,6 +82,7 @@ export const SignUp = () => {
 
               <label htmlFor="">Confirme a senha</label>
               <input type="password" {...register("passwordConfirm")} />
+              {/* <p> {errors.passwordConfirm?.message}</p> */}
             </div>
 
             <div className="signUpAdress1">
