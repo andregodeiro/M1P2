@@ -1,4 +1,5 @@
 import { NavbarComponent } from "../../styles";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -10,7 +11,9 @@ export const Navbar = () => {
         <div className="linksNavbar">
           <a href="./">Início</a>
           <a href="./">Adicionar Dispositivos</a>
-          <a href="./">Perfil do Usuário</a>
+          <Link to="/profile">
+            <a>Perfil do Usuário</a>
+          </Link>
         </div>
       </div>
     </NavbarComponent>

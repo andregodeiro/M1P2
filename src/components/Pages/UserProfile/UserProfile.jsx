@@ -1,7 +1,15 @@
+import React, { useContext } from "react";
+import { AuthenticationContext } from "../../Context/Authentication";
 import { Button, UserProfileCard } from "../../../styles";
 import { Navbar } from "../../Navbar/Navbar";
 
 export const UserProfile = () => {
+  const { authenticated, logout } = useContext(AuthenticationContext);
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div>
       <Navbar />
@@ -37,7 +45,10 @@ export const UserProfile = () => {
             <Button>
               <a href="./">Editar</a>
             </Button>
-            <a href="./">Sair</a>
+            <a href="" onClick={handleLogout}>
+              Sair
+            </a>
+            <p>{String(authenticated)}</p>
           </div>
         </div>
       </UserProfileCard>
