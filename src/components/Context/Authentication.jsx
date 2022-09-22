@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { set } from "react-hook-form";
+
+import { api, createSession } from "../../services/api";
 
 export const AuthenticationContext = createContext();
 
@@ -20,22 +21,24 @@ export const AuthenticationProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (email, password) => {
-    console.log("login autenthicated", { email, password });
+  const login = async (email, password) => {
+    const response = await createSession(email, password);
+
+    console.log("login autenthicated", response.data);
 
     //API criar uma session e retornar user
 
-    const loggedUser = {
-      id: "123",
-      email,
-    };
+    const loggedUser = response.data.user;
+    const token = response.data.token;
 
     localStorage.setItem("user", JSON.stringify(loggedUser));
+    localStorage.setItem("token", token);
 
-    if (password === "secret") {
-      setUser(loggedUser);
-      navigate("/home");
-    }
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
+    setUser(loggedUser);
+    navigate("/home");
+    console.log(token);
   };
 
   // user == null
@@ -45,6 +48,8 @@ export const AuthenticationProvider = ({ children }) => {
     console.log("logout");
     setUser(null);
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    api.defaults.headers.Authorization = null;
     navigate("/");
   };
 
