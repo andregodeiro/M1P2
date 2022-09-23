@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Button, DeviceList, SearchBar } from "../../../styles";
+import React from "react";
+import { DeviceList, SearchBar } from "../../../styles";
 import { Navbar } from "../../Navbar/Navbar";
 import { DevicesCard } from "../../DevicesCard/DevicesCard";
-import { Loading } from "../../Loading/Loading";
-import { getDevice } from "../../../services/api";
-import userEvent from "@testing-library/user-event";
 
 export const Devices = () => {
   return (

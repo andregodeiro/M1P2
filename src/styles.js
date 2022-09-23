@@ -226,6 +226,7 @@ export const DeviceList = styled.div`
     display: flex;
     gap: 50px;
     justify-content: center;
+    flex-wrap: wrap;
   }
 `;
 

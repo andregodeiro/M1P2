@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "../OpenWeather/styles.css";
 
 export const OpenWeather = () => {
   // //State
@@ -18,12 +19,26 @@ export const OpenWeather = () => {
   // }, [apiUrl]);
 
   return (
-    <div>
+    <div className="weather">
       <div className="weatherTile">
-        <h3>Cidade</h3>
-        <p>Temperatura</p>
-        <p>Umidade</p>
-        <p>Condições</p>
+        <div className="imgBox"></div>
+        <div className="infoBox">
+          <p>35º C</p>
+          <div className="cityData">
+            <h3>Natal</h3>
+            <h5>Rio Grande do Norte, Brasil</h5>
+          </div>
+          <div className="anotherData">
+            <div className="humidityData">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/728/728093.png"
+                alt=""
+              />
+              <p>Umidade</p>
+            </div>
+            <p>Condições</p>
+          </div>
+        </div>
       </div>
     </div>
   );
