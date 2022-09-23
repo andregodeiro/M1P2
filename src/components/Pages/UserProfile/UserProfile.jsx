@@ -1,16 +1,26 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { AuthenticationContext } from "../../Context/Authentication";
 import { Button, UserProfileCard } from "../../../styles";
 import { Navbar } from "../../Navbar/Navbar";
-import { createSession } from "../../../services/api";
+import { getUser } from "../../../services/api";
+import { Loading } from "../../Loading/Loading";
 
 export const UserProfile = () => {
   const { authenticated, logout } = useContext(AuthenticationContext);
+  const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // const userData = async (user) => {
-  //   const response = await createSession(user);
-  //   return response;
-  // };
+  useEffect(() => {
+    (async () => {
+      const response = await getUser();
+      setUser(response.data);
+      setLoading(false);
+    })();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const handleLogout = () => {
     logout();
@@ -32,19 +42,23 @@ export const UserProfile = () => {
 
           <div className="profileData">
             <div className="userImage">
-              <img src="https://i.imgur.com/7beNOEP.jpg" alt="" />
+              <img src={user.photoUrl} alt="" />
             </div>
 
             <div className="userData">
-              <h5></h5>
-              <p>alpacino@example.com</p>
-              <p>555-123-456</p>
+              <h5>{user.fullName}</h5>
+              <p>{user.email}</p>
+              <p>{user.telephone}</p>
             </div>
           </div>
           <div className="userAdress">
-            <p>6831 Hollywood Blvd</p>
-            <p>Los Angeles, CA</p>
-            <p>90028-6102</p>
+            <p>
+              {user.userAddress.street}, {user.userAddress.number}
+            </p>
+            <p>
+              {user.userAddress.city}, {user.userAddress.state}
+            </p>
+            <p>{user.userAddress.zipCode}</p>
           </div>
 
           <div className="buttons">

@@ -11,13 +11,15 @@ import Home from "./components/Pages/Home/Home";
 import Login from "./components/Pages/Login/Login";
 import SignUp from "./components/Pages/SignUp/SignUp";
 import { UserProfile } from "./components/Pages/UserProfile/UserProfile";
+import { Loading } from "./components/Loading/Loading";
+import { Devices } from "./components/Pages/Devices/Devices";
 
 export const LabRoutes = () => {
   const Private = ({ children }) => {
     const { authenticated, loading } = useContext(AuthenticationContext);
 
     if (loading) {
-      return <div className="loading">Carregando...</div>;
+      return <Loading />;
     }
 
     if (!authenticated) {
@@ -41,6 +43,7 @@ export const LabRoutes = () => {
           />
           <Route path="/cadastro" element={<SignUp />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/devices" element={<Devices />} />
         </Routes>
       </AuthenticationProvider>
     </BrowserRouter>

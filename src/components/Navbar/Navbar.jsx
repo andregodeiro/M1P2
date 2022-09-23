@@ -10,7 +10,9 @@ export const Navbar = () => {
         </div>
         <div className="linksNavbar">
           <a href="./">Início</a>
-          <a href="./">Adicionar Dispositivos</a>
+          <Link to="/devices">
+            <a>Dispositivos</a>
+          </Link>
           <Link to="/profile">
             <a>Perfil do Usuário</a>
           </Link>
