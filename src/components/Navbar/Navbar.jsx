@@ -9,13 +9,9 @@ export const Navbar = () => {
           <img src="https://i.imgur.com/b1ujw9r.png" alt="" />
         </div>
         <div className="linksNavbar">
-          <a href="./">Início</a>
-          <Link to="/devices">
-            <a>Dispositivos</a>
-          </Link>
-          <Link to="/profile">
-            <a>Perfil do Usuário</a>
-          </Link>
+          <Link to="/home">Início</Link>
+          <Link to="/devices">Dispositivos</Link>
+          <Link to="/profile">Perfil do Usuário</Link>
         </div>
       </div>
     </NavbarComponent>
