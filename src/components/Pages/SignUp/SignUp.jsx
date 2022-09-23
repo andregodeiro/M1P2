@@ -6,24 +6,46 @@ import * as yup from "yup";
 export const SignUp = () => {
   //Validação YUP
   const schema = yup.object().shape({
-    name: yup.string().min(2).required(),
-    email: yup.string().email().required(),
+    name: yup
+      .string()
+      .min(15, "Campo obrigatório! Mínimo 15 caracteres!")
+      .required(),
+    email: yup.string().email().required("Campo obrigatório!"),
     avatar: yup.string().url(),
-    password: yup.string().min(8, "mínimo 8 caracteres").required(),
+    password: yup
+      .string()
+      .min(8, "Mínimo 8 caracteres")
+      .required("Campo obrigatório!")
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        "A senha precisa ter no mínimo 8 caracteres, " +
+          "uma letra maiúscula, uma letra minúscula, " +
+          "um número e um caracter especial"
+      ),
     passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password"), null], "As senhas devem ser idênticas!"),
     telephone: yup.number(),
-    cep: yup.string().min(8, "Insira um CEP válido").required(),
+    cep: yup
+      .string()
+      .min(8, "Insira um CEP válido")
+      .required("Campo obrigatório!"),
     adress: yup.string().required(),
-    adressNumber: yup.number().required(),
+    adressNumber: yup.number().required("Campo obrigatório!"),
     district: yup.string().required(),
     city: yup.string().required(),
     state: yup.string().required(),
     comp: yup.string(),
   });
 
-  const { register, handleSubmit, setValue, setFocus, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    setFocus,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
 
@@ -62,12 +84,15 @@ export const SignUp = () => {
             <div className="signUpData1">
               <label htmlFor="">Nome Completo</label>
               <input type="text" {...register("name")} />
+              <small>{errors.name?.message}</small>
 
               <label htmlFor="">E-mail</label>
               <input type="text" {...register("email")} />
+              <small>{errors.email?.message}</small>
 
               <label htmlFor="">Senha</label>
               <input type="password" {...register("password")} />
+              <p>{errors.password?.message}</p>
             </div>
             <div className="signUpData2">
               <label htmlFor="">Foto de Perfil</label>
@@ -82,7 +107,7 @@ export const SignUp = () => {
 
               <label htmlFor="">Confirme a senha</label>
               <input type="password" {...register("passwordConfirm")} />
-              {/* <p> {errors.passwordConfirm?.message}</p> */}
+              <small>{errors.passwordConfirm?.message}</small>
             </div>
 
             <div className="signUpAdress1">
@@ -93,6 +118,7 @@ export const SignUp = () => {
                 {...register("cep")}
                 onBlur={catchCep}
               />
+              <small>{errors.cep?.message}</small>
 
               <label htmlFor="">Logradouro</label>
               <input type="text" id="logradouro" {...register("adress")} />

@@ -2,9 +2,15 @@ import React, { useContext } from "react";
 import { AuthenticationContext } from "../../Context/Authentication";
 import { Button, UserProfileCard } from "../../../styles";
 import { Navbar } from "../../Navbar/Navbar";
+import { createSession } from "../../../services/api";
 
 export const UserProfile = () => {
   const { authenticated, logout } = useContext(AuthenticationContext);
+
+  // const userData = async (user) => {
+  //   const response = await createSession(user);
+  //   return response;
+  // };
 
   const handleLogout = () => {
     logout();
@@ -30,7 +36,7 @@ export const UserProfile = () => {
             </div>
 
             <div className="userData">
-              <h5>Al Pacino</h5>
+              <h5></h5>
               <p>alpacino@example.com</p>
               <p>555-123-456</p>
             </div>
