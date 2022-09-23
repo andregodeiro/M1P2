@@ -4,25 +4,9 @@ import { Navbar } from "../../Navbar/Navbar";
 import { DevicesCard } from "../../DevicesCard/DevicesCard";
 import { Loading } from "../../Loading/Loading";
 import { getDevice } from "../../../services/api";
+import userEvent from "@testing-library/user-event";
 
 export const Devices = () => {
-  const [device, setDevice] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    (async () => {
-      const response = await getDevice();
-      setDevice(response.data);
-      setLoading(false);
-    })();
-  }, []);
-
-  if (loading) {
-    return <Loading />;
-  }
-
-  console.log(device);
-
   return (
     <div>
       <Navbar />
@@ -38,8 +22,6 @@ export const Devices = () => {
       </SearchBar>
       <DeviceList>
         <div className="deviceList">
-          <DevicesCard />
-          <DevicesCard />
           <DevicesCard />
         </div>
       </DeviceList>
