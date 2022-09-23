@@ -178,6 +178,20 @@ export const DeviceCard = styled.div`
     width: 200px;
   }
 
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    list-style-type: none;
+  }
+
+  h3 {
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
   .userDeviceCard {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
