@@ -1,4 +1,4 @@
-import { Button, FormSignUp, FormSignUpHeader } from "../../../styles";
+import { Button, FormSignUp, FormSignUpHeader, Input } from "../../../styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -121,71 +121,83 @@ export const SignUp = () => {
         </p>
       </FormSignUpHeader>
       <div>
-        <FormSignUp>
-          <form onSubmit={handleSubmit(createUser)} className="formSignUp">
-            <div className="signUpData1">
-              <label htmlFor="">Nome Completo</label>
-              <input type="text" {...register("fullName")} />
-              <small>{errors.fullName?.message}</small>
+        <div className="formContainer">
+          <FormSignUp>
+            <form onSubmit={handleSubmit(createUser)}>
+              <div className="formSignUp">
+                <div className="signUpData">
+                  <h3>Dados Pessoais</h3>
+                  <label htmlFor="">Nome Completo</label>
+                  <Input type="text" {...register("fullName")} />
+                  <small>{errors.fullName?.message}</small>
 
-              <label htmlFor="">E-mail</label>
-              <input type="text" {...register("email")} />
-              <small>{errors.email?.message}</small>
+                  <label htmlFor="">E-mail</label>
+                  <Input type="text" {...register("email")} />
+                  <small>{errors.email?.message}</small>
 
-              <label htmlFor="">Senha</label>
-              <input type="password" {...register("password")} />
-              <p>{errors.password?.message}</p>
-            </div>
-            <div className="signUpData2">
-              <label htmlFor="">Foto de Perfil</label>
-              <input
-                type="text"
-                placeholder="Insira uma URL"
-                {...register("photoUrl")}
-              />
+                  <label htmlFor="">Foto de Perfil</label>
+                  <Input
+                    type="text"
+                    placeholder="Insira uma URL"
+                    {...register("photoUrl")}
+                  />
 
-              <label htmlFor="">Telefone</label>
-              <input type="number" {...register("phone")} />
+                  <label htmlFor="">Telefone</label>
+                  <Input type="number" {...register("phone")} />
 
-              <label htmlFor="">Confirme a senha</label>
-              <input type="password" {...register("passwordConfirm")} />
-              <small>{errors.passwordConfirm?.message}</small>
-            </div>
+                  <label htmlFor="">Senha</label>
+                  <Input type="password" {...register("password")} />
+                  <p>{errors.password?.message}</p>
 
-            <div className="signUpAdress1">
-              <label htmlFor="">CEP</label>
-              <input
-                type="text"
-                id="cep"
-                {...register("zipCode")}
-                onBlur={catchCep}
-              />
-              <small>{errors.zipCode?.message}</small>
+                  <label htmlFor="">Confirme a senha</label>
+                  <Input type="password" {...register("passwordConfirm")} />
+                  <small>{errors.passwordConfirm?.message}</small>
+                </div>
 
-              <label htmlFor="">Logradouro</label>
-              <input type="text" id="logradouro" {...register("street")} />
+                <div className="signUpAdress">
+                  <h3>Endereço</h3>
+                  <label htmlFor="">CEP</label>
+                  <Input
+                    type="text"
+                    id="cep"
+                    {...register("zipCode")}
+                    onBlur={catchCep}
+                  />
+                  <small>{errors.zipCode?.message}</small>
 
-              <label htmlFor="">Número</label>
-              <input type="number" id="numero" {...register("number")} />
-            </div>
-            <div className="signUpAdress2">
-              <label htmlFor="">Bairro</label>
-              <input type="text" id="bairro" {...register("neighborhood")} />
+                  <label htmlFor="">Logradouro</label>
+                  <Input type="text" id="logradouro" {...register("street")} />
 
-              <label htmlFor="">Cidade</label>
-              <input type="text" id="cidade" {...register("city")} />
+                  <label htmlFor="">Bairro</label>
+                  <Input
+                    type="text"
+                    id="bairro"
+                    {...register("neighborhood")}
+                  />
 
-              <label htmlFor="">Estado</label>
-              <input type="text" id="uf" {...register("state")} />
+                  <label htmlFor="">Cidade</label>
+                  <Input type="text" id="cidade" {...register("city")} />
 
-              <label htmlFor="">Complemento</label>
-              <input type="text" id="complemento" {...register("complement")} />
-            </div>
-            <div className="sendButton">
-              <Button type="submit">cadastrar</Button>
-            </div>
-          </form>
-        </FormSignUp>
+                  <label htmlFor="">Estado</label>
+                  <Input type="text" id="uf" {...register("state")} />
+
+                  <label htmlFor="">Número</label>
+                  <Input type="number" id="numero" {...register("number")} />
+
+                  <label htmlFor="">Complemento</label>
+                  <Input
+                    ype="text"
+                    id="complemento"
+                    {...register("complement")}
+                  />
+                </div>
+              </div>
+              <div className="sendButton">
+                <Button type="submit">cadastrar</Button>
+              </div>
+            </form>
+          </FormSignUp>
+        </div>
       </div>
     </div>
   );

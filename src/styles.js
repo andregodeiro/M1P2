@@ -64,11 +64,22 @@ export const Button = styled.button`
   width: 100px;
   font-size: 20px;
   border-radius: 10px;
+  cursor: pointer;
 
   a {
     text-decoration: none;
     color: white;
   }
+`;
+
+export const Input = styled.input`
+  outline: none;
+  border: solid #000;
+  border-width: 0 0 1px 0;
+`;
+
+export const Label = styled.label`
+  text-align: left;
 `;
 
 export const FormSignUpHeader = styled.div`
@@ -81,68 +92,47 @@ export const FormSignUpHeader = styled.div`
 `;
 
 export const FormSignUp = styled.div`
+  /* border: solid 3px purple; */
+  background-color: white;
+  padding: 10px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 50%;
+
+  span {
+    padding: 10px;
+  }
+
   .formSignUp {
-    display: grid;
-    text-align: center;
-    align-items: center;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
     justify-content: center;
-    /* border: solid blue; */
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    padding: 30px;
+  }
+
+  .signUpData {
+    /* border: solid 3px green; */
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    margin-top: 100px;
-    width: 2vr;
   }
 
-  .signUpData1 {
-    grid-area: 1 / 1 / 2 / 2;
+  .signUpAdress {
+    /* border: solid 3px yellow; */
     display: flex;
     flex-direction: column;
-    align-items: start;
-    /* border: solid blue; */
-  }
-
-  .signUpData2 {
-    grid-area: 1 / 2 / 2 / 3;
-    display: flex;
-    flex-direction: column;
-    /* border: solid blue; */
-  }
-
-  .signUpAdress1 {
-    grid-area: 2 / 1 / 3 / 2;
-    /* border: solid red; */
-    display: flex;
-    flex-direction: column;
-  }
-
-  .signUpAdress2 {
-    grid-area: 2 / 2 / 3 / 3;
-    /* border: solid red; */
-    display: flex;
-    flex-direction: column;
+    gap: 10px;
   }
 
   label {
-    /* border: solid; */
+    /* border: solid grey; */
     text-align: left;
-  }
-
-  .formSignUp input {
-    outline: none;
-    border: solid #000;
-    border-width: 0 0 1px 0;
-    width: 550px;
   }
 
   .sendButton {
     text-align: center;
-    display: flex;
-    justify-content: center;
-    /* border: solid grey; */
-    margin-top: 30px;
+    /* border: solid lightseagreen; */
   }
 `;
 

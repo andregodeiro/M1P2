@@ -1,4 +1,4 @@
-import { Button, ContainerLogin } from "../../../styles";
+import { Button, ContainerLogin, Input } from "../../../styles";
 import { Link } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
@@ -13,11 +13,16 @@ export const Login = () => {
   const [password, setPassword] = useState("");
 
   const schema = yup.object().shape({
-    email: yup.string().required(),
-    password: yup.string().required(),
+    email: yup.string().required("Digite seu e-mail"),
+    password: yup.string().required("Digite sua senha"),
   });
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
 
@@ -36,7 +41,8 @@ export const Login = () => {
             <label htmlFor="email" name="email" id="email">
               e-mail
             </label>
-            <input
+
+            <Input
               type="email"
               name="email"
               id="email"
@@ -44,8 +50,10 @@ export const Login = () => {
               defaultValue={email}
               onChange={(event) => setEmail(event.target.value)}
             />
+            <small>{errors.email?.message}</small>
+
             <label htmlFor="password">senha</label>
-            <input
+            <Input
               type="password"
               name="password"
               id="password"
@@ -53,13 +61,10 @@ export const Login = () => {
               defaultValue={password}
               onChange={(event) => setPassword(event.target.value)}
             />
+            <small>{errors.password?.message}</small>
           </div>
           <div className="buttons">
-            <Button>
-              {/* <Link to="/home"> */}
-              <input type="submit" value="acessar" />
-              {/* </Link> */}
-            </Button>
+            <Button type="submit">acessar</Button>
             <Link to="/cadastro">crie uma conta no connectlab</Link>
           </div>
         </form>
