@@ -1,22 +1,14 @@
 import React from "react";
-import { DeviceList, SearchBar } from "../../../styles";
+import { DeviceList } from "../../../styles";
 import { Navbar } from "../../Navbar/Navbar";
 import { DevicesCard } from "../../DevicesCard/DevicesCard";
+import { SearchBar } from "../../SearchBar/SearchBar";
 
 export const Devices = () => {
   return (
     <div>
       <Navbar />
-      <SearchBar>
-        <div>
-          <form action="">
-            <input
-              type="text"
-              placeholder="Insira o nome de um dispositivo..."
-            />
-          </form>
-        </div>
-      </SearchBar>
+      <SearchBar />
       <DeviceList>
         <div className="deviceList">
           <DevicesCard />

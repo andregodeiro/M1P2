@@ -57,11 +57,17 @@ export const ContainerLogin = styled.div`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
   border: none;
   background-color: #0494dc;
   color: white;
   padding: 10px;
-  width: 100px;
+  width: 200px;
+  height: 50px;
   font-size: 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -220,7 +226,7 @@ export const DeviceList = styled.div`
   }
 `;
 
-export const SearchBar = styled.div`
+export const StyledSearchBar = styled.div`
   border: solid purple;
   display: flex;
   justify-content: center;

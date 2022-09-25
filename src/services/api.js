@@ -29,3 +29,35 @@ export const getDevice = async () => {
 
   return api.get("/devices");
 };
+
+export const addUserDevice = async (listUserDevices) => {
+  console.log(listUserDevices);
+  const recoveredToken = localStorage.getItem("token");
+
+  api.defaults.headers.Authorization = `Bearer ${recoveredToken}`;
+
+  return await api.post("/userDevices", { ...listUserDevices });
+};
+
+export const userDeviceList = async () => {
+  const recoveredUser = localStorage.getItem("user");
+  const recoveredToken = localStorage.getItem("token");
+  const recoveredId = JSON.parse(recoveredUser);
+  const id = recoveredId._id;
+
+  api.defaults.headers.Authorization = `Bearer ${recoveredToken}`;
+
+  return await api.get(`/userDevices/user/${id}`);
+};
+
+export const deleteDevice = async (selectedDevice) => {
+  console.log(selectedDevice);
+  const recoveredToken = localStorage.getItem("token");
+
+  api.defaults.headers.Authorization = `Bearer ${recoveredToken}`;
+
+  const teste = await api.delete(`/userDevices/${selectedDevice}`);
+  console.log(teste);
+
+  return teste;
+};

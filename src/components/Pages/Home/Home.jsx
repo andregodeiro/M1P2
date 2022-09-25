@@ -5,6 +5,7 @@ import { OpenWeather } from "../../OpenWeather/OpenWeather";
 import { useContext } from "react";
 import { AuthenticationContext } from "../../Context/Authentication";
 import { WelcomeMessage } from "../../WelcomeMessage/WelcomeMessage";
+import { UserDevicesList } from "../../UserDevicesList/UserDevicesList";
 
 export const Home = () => {
   return (
@@ -17,9 +18,7 @@ export const Home = () => {
       </div>
       <DeviceList>
         <div className="deviceList">
-          <HomeDeviceCard />
-          <HomeDeviceCard />
-          <HomeDeviceCard />
+          <UserDevicesList />
         </div>
       </DeviceList>
     </div>

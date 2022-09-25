@@ -1,0 +1,39 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid red;
+}
+
+.modal-overlay {
+  background: #ecececec;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: solid blue;
+}
+
+.modal-card {
+  width: 90%;
+  max-width: 500px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.modal-card img {
+  width: 300px;
+}
+
+/* .add-btn {
+  width: 100px;
+  display: flex;
+} */

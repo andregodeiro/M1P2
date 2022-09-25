@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthenticationContext } from "../../Context/Authentication";
 import { Button, UserProfileCard } from "../../../styles";
 import { Navbar } from "../../Navbar/Navbar";
-import { getUser } from "../../../services/api";
+import { getUser, userDeviceList } from "../../../services/api";
 import { Loading } from "../../Loading/Loading";
 
 export const UserProfile = () => {
@@ -13,6 +13,7 @@ export const UserProfile = () => {
   useEffect(() => {
     (async () => {
       const response = await getUser();
+      await userDeviceList();
       setUser(response.data);
       setLoading(false);
     })();
