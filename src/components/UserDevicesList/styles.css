@@ -1,3 +1,9 @@
+.delete-device-btn {
+  width: 30px;
+}
+.delete-device-container {
+  width: 20px;
+}
 .modal-container {
   display: flex;
   flex-direction: column;
@@ -86,4 +92,8 @@
   background: none;
   border: 0;
   cursor: pointer;
+}
+
+h3 {
+  font-size: 17px;
 }

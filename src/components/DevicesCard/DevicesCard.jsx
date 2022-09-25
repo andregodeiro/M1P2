@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Button, DeviceCard } from "../../styles";
+import { Button, DeviceCard, Input } from "../../styles";
 import { getDevice, addUserDevice } from "../../services/api";
 import { Loading } from "../Loading/Loading";
 import Modal from "react-modal";
 import { AuthenticationContext } from "../Context/Authentication";
 import styles from "../DevicesCard/styles.css";
 import { LoadingBtn } from "../LoadingBtn/LoadingBtn";
+import { filteredDevicesProvider } from "../SearchBar/SearchBar";
 
 Modal.setAppElement("#root");
 
@@ -16,6 +17,9 @@ export const DevicesCard = () => {
   const [deviceModal, setDeviceModal] = useState({});
   const [modalIsOpen, setIsOpen] = useState(false);
   const { user } = useContext(AuthenticationContext);
+  // const { searchDevice } = useContext(filteredDevicesProvider);
+
+  // console.log(searchDevice);
 
   const openModal = () => {
     setIsOpen(true);
@@ -96,17 +100,43 @@ export const DevicesCard = () => {
           className="modal-card"
         >
           <div className="modal-container">
-            <img src={deviceModal.photoUrl} alt={deviceModal.name} />
-            <h2>{deviceModal.name}</h2>
-            <h5>{deviceModal.madeBy}</h5>
-            <p>{deviceModal.type}</p>
-            <Button
-              onClick={() => addDevice(deviceModal)}
-              disabled={loadingBtn}
-              className="add-btn"
-            >
-              Adicionar{loadingBtn && <LoadingBtn />}
-            </Button>
+            <div className="device-container">
+              <div className="device-img">
+                <img src={deviceModal.photoUrl} alt={deviceModal.name} />
+              </div>
+              <div className="device-data">
+                <h2>Dispositivo: {deviceModal.name}</h2>
+                <h5>Fabricante: {deviceModal.madeBy}</h5>
+                <p>{deviceModal.type}</p>
+                <div className="device-local">
+                  <div>
+                    <label>Local de instalação: </label>
+                    <select className="device-local-select">
+                      <option>Casa</option>
+                      <option>Escritório</option>
+                      <option>Fábrica</option>
+                    </select>
+                  </div>
+                </div>
+                <Input
+                  className="device-local-input"
+                  placeholder="Onde o dispositivo está instalado?"
+                />
+              </div>
+            </div>
+
+            <div className="modal-btn">
+              <Button
+                onClick={() => addDevice(deviceModal)}
+                disabled={loadingBtn}
+                className="add-btn"
+              >
+                Adicionar{loadingBtn && <LoadingBtn />}
+              </Button>
+              <button className="btn-close-modal" onClick={closeModal}>
+                Fechar
+              </button>
+            </div>
           </div>
         </Modal>
       )}

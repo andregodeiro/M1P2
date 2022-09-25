@@ -5,10 +5,11 @@ import { Loading } from "../Loading/Loading";
 
 export const filteredDevicesProvider = createContext();
 
-export const SearchBar = () => {
+export const SearchBar = ({ children }) => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [devices, setDevices] = useState([]);
+  const [searchDevice, setSearchDevice] = useState([]);
 
   const [searchParameter] = useState(["name"]);
 
@@ -35,20 +36,25 @@ export const SearchBar = () => {
     });
   });
 
-  console.log(filteredDevices); // create a context and set it to setDevices
+  // setSearchDevice(filteredDevices);
+
+  console.log(searchDevice); // create a context and set it to setDevices
 
   return (
-    <StyledSearchBar>
-      <div>
-        <form action="">
-          <input
-            type="text"
-            placeholder="Insira o nome de um dispositivo..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </form>
-      </div>
-    </StyledSearchBar>
+    <filteredDevicesProvider.Provider value={searchDevice}>
+      <StyledSearchBar>
+        <div>
+          <form action="">
+            <input
+              type="text"
+              placeholder="Insira o nome de um dispositivo..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </form>
+        </div>
+      </StyledSearchBar>
+      {children}
+    </filteredDevicesProvider.Provider>
   );
 };

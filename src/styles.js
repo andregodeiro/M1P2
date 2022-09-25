@@ -171,7 +171,7 @@ export const NavbarComponent = styled.div`
 
 export const DeviceCard = styled.div`
   img {
-    width: 200px;
+    width: 150px;
   }
 
   ul {
@@ -194,20 +194,23 @@ export const DeviceCard = styled.div`
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    border: solid green;
     width: 500px;
-    background-color: #e1e1e1;
+    background-color: #a7bac4;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.49);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.49);
   }
 
   .deviceImage {
     grid-area: 1 / 1 / 2 / 2;
-    border: solid red;
     background-color: white;
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
   }
 
   .deviceData {
     grid-area: 1 / 2 / 2 / 3;
-    border: solid blue;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -217,7 +220,8 @@ export const DeviceCard = styled.div`
 `;
 
 export const DeviceList = styled.div`
-  border: solid yellow;
+  margin-top: 30px;
+
   div {
     display: flex;
     gap: 50px;
@@ -231,7 +235,6 @@ export const StyledSearchBar = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
-  gap: 10px;
 
   input {
     width: 120vh;
@@ -239,8 +242,8 @@ export const StyledSearchBar = styled.div`
     background-color: #e1e1e1;
     padding: 10px;
     outline: none;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 90px;
+    margin-bottom: 90px;
     border-radius: 10px;
   }
 
