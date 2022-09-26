@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { userDeviceList, deleteDevice } from "../../services/api";
 import { DeviceCard } from "../../styles";
 import { Loading } from "../Loading/Loading";
-import { Button, Input, DeleteButton } from "../../styles";
+import { Button, DeleteButton } from "../../styles";
 import styles from "../UserDevicesList/styles.css";
 import { Swtich } from "../Switch/Swtich";
 import Modal from "react-modal";

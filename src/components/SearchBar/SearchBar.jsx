@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, createContext } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { StyledSearchBar } from "../../styles";
 import { getDevice } from "../../services/api";
 import { Loading } from "../Loading/Loading";

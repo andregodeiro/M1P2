@@ -136,8 +136,14 @@ export const FormSignUp = styled.div`
   }
 
   .sendButton {
+    display: flex;
     text-align: center;
-    /* border: solid lightseagreen; */
+    justify-content: center;
+  }
+
+  .loginButton {
+    padding: 10px;
+    text-align: center;
   }
 `;
 

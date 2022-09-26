@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { api } from "../../../services/api";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const SignUp = () => {
   //Validação YUP
@@ -109,6 +112,13 @@ export const SignUp = () => {
       .catch((response) => {
         console.log("Erro", +response);
       });
+    userSignedUp();
+  };
+
+  const userSignedUp = () => {
+    toast.success("Usuário Cadastrado!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   return (
@@ -194,8 +204,12 @@ export const SignUp = () => {
               </div>
               <div className="sendButton">
                 <Button type="submit">cadastrar</Button>
+                <ToastContainer />
               </div>
             </form>
+            <div className="loginButton">
+              <Link to="/">login</Link>
+            </div>
           </FormSignUp>
         </div>
       </div>
