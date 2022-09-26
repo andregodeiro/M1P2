@@ -31,12 +31,6 @@ export const UserProfile = () => {
     <div>
       <Navbar />
 
-      <Button>
-        <div className="backButton">
-          <a href="./">Voltar</a>
-        </div>
-      </Button>
-
       <UserProfileCard>
         <div className="profileCard">
           <h2>Perfil do Usuário</h2>
@@ -63,13 +57,10 @@ export const UserProfile = () => {
           </div>
 
           <div className="buttons">
-            <Button>
-              <a href="./">Editar</a>
-            </Button>
+            <Button>Editar</Button>
             <a href="" onClick={handleLogout}>
               Sair
             </a>
-            <p>{String(authenticated)}</p>
           </div>
         </div>
       </UserProfileCard>

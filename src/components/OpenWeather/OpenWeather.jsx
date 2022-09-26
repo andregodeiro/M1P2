@@ -1,31 +1,34 @@
-import { useEffect, useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { AuthenticationContext } from "../Context/Authentication";
 import styles from "../OpenWeather/styles.css";
 
 export const OpenWeather = () => {
-  // //State
-  // const [apidata, setApiData] = useState({});
-  // const [getState, setGetState] = useState("natal");
+  const [cityWeather, setCityWeather] = useState({});
+  const { user } = useContext(AuthenticationContext);
 
-  // //API KEY AND URL
-  // const apiKey = process.env.REACT_APP_API_KEY;
-  // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=NATAL&appid=${apiKey}`;
+  const apiKey = "0c5d4813307ea2edd73a81f5c85cf910";
 
-  // //Side effect
+  useEffect(() => {
+    (async (city) => {
+      const userCity = user.userAddress.city;
+      const apiWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&units=metric&appid=${apiKey}&lang=pt_br`;
 
-  // useEffect(() => {
-  //   fetch(apiUrl)
-  //     .then((res) => res.json())
-  //     .then((data) => setApiData(data));
-  // }, [apiUrl]);
+      const response = await fetch(apiWeatherUrl);
+      const data = await response.json();
+      setCityWeather(data);
+    })();
+  }, []);
+
+  console.log(cityWeather);
 
   return (
     <div className="weather">
       <div className="weatherTile">
         <div className="imgBox"></div>
         <div className="infoBox">
-          <p>35º C</p>
+          <p>º C</p>
           <div className="cityData">
-            <h3>Natal</h3>
+            {/* <h3>{cityWeather.name}</h3> */}
             <h5>Rio Grande do Norte, Brasil</h5>
           </div>
           <div className="anotherData">
@@ -34,7 +37,7 @@ export const OpenWeather = () => {
                 src="https://cdn-icons-png.flaticon.com/512/728/728093.png"
                 alt=""
               />
-              <p>Umidade</p>
+              {/* <p>{cityWeather.main.humidity}</p> */}
             </div>
             <p>Condições</p>
           </div>

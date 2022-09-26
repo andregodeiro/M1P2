@@ -35,7 +35,6 @@ export const Login = () => {
     <ContainerLogin>
       <div>
         <img src="https://i.imgur.com/pTj5VAl.png" alt="" />
-        <p>{String(authenticated)}</p>
         <form onSubmit={handleSubmit(userLogin)} className="formLoginContainer">
           <div className="labelInput">
             <label htmlFor="email" name="email" id="email">

@@ -98,7 +98,6 @@ export const FormSignUpHeader = styled.div`
 `;
 
 export const FormSignUp = styled.div`
-  /* border: solid 3px purple; */
   background-color: white;
   padding: 10px;
   margin: 0 auto;
@@ -231,7 +230,6 @@ export const DeviceList = styled.div`
 `;
 
 export const StyledSearchBar = styled.div`
-  border: solid purple;
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -266,6 +264,10 @@ export const UserProfileCard = styled.div`
     background-color: #e0e0e0;
     width: 500px;
     margin: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.49);
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.49);
   }
 
   .profileData {
@@ -274,7 +276,6 @@ export const UserProfileCard = styled.div`
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    border: solid red;
     margin: 50px;
     color: #707070;
   }
@@ -285,21 +286,18 @@ export const UserProfileCard = styled.div`
 
   .userImage img {
     width: 150px;
+    border-radius: 30px;
   }
 
   .userData {
     grid-area: 1 / 2 / 2 / 3;
-    border: solid blue;
-    border: solid blue;
     display: flex;
     flex-direction: column;
     gap: 10px;
     justify-content: center;
-    align-items: flex-start;
   }
 
   .userAdress {
-    border: solid yellow;
     margin-bottom: 50px;
   }
   .userAdress p {

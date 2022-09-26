@@ -95,21 +95,9 @@ export const UserDevicesList = () => {
                 <h2>Dispositivo: {deviceModal.name}</h2>
                 <h5>Fabricante: {deviceModal.madeBy}</h5>
                 <p>{deviceModal.type}</p>
-
-                <div className="device-local">
-                  <div>
-                    <label>Local de instalação: </label>
-                    <select className="device-local-select">
-                      <option>Casa</option>
-                      <option>Escritório</option>
-                      <option>Fábrica</option>
-                    </select>
-                  </div>
-                </div>
-                <Input
-                  className="device-local-input"
-                  placeholder="Onde o dispositivo está instalado?"
-                />
+                <p>Endereço IP: {deviceModal.info.ip_address}</p>
+                <p>Endereço MAC: {deviceModal.info.mac_address}</p>
+                <p>Sinal: {deviceModal.info.signal}</p>
               </div>
             </div>
             <div className="modal-btn">
