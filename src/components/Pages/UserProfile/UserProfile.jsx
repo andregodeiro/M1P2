@@ -37,7 +37,14 @@ export const UserProfile = () => {
 
           <div className="profileData">
             <div className="userImage">
-              <img src={user.photoUrl} alt="" />
+              <img
+                src={user.photoUrl}
+                alt=""
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null; // prevents looping
+                  currentTarget.src = "https://i.imgur.com/DKYclA9.jpg";
+                }}
+              />
             </div>
 
             <div className="userData">
