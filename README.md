@@ -1,4 +1,4 @@
-<p align="center"><a href="https://imgur.com/b1ujw9r"><img src="https://i.imgur.com/b1ujw9r.png" title="source: imgur.com" /></a></p>
+<p align="center"><a href="https://imgur.com/vqDdexu"><img src="https://i.imgur.com/vqDdexu.png" title="source: imgur.com" /></a></p>
 
 
 <h2>💾 Objetivo</h2>
