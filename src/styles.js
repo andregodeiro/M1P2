@@ -82,6 +82,7 @@ export const Input = styled.input`
   outline: none;
   border: solid #000;
   border-width: 0 0 1px 0;
+  min-width: 350px;
 `;
 
 export const Label = styled.label`
