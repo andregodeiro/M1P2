@@ -4,7 +4,6 @@ import styles from "../WelcomeMessage/styles.css";
 
 export const WelcomeMessage = () => {
   const { user } = useContext(AuthenticationContext);
-  console.log(user);
 
   function firstName(name, space) {
     return name.split(space, 1)[0];

@@ -16,9 +16,6 @@ export const getUser = async () => {
 
   api.defaults.headers.Authorization = `Bearer ${recoveredToken}`;
 
-  console.log(recoveredToken);
-  console.log(id);
-
   return api.get(`/users/${id}`);
 };
 
@@ -31,7 +28,6 @@ export const getDevice = async () => {
 };
 
 export const addUserDevice = async (listUserDevices) => {
-  console.log(listUserDevices);
   const recoveredToken = localStorage.getItem("token");
 
   api.defaults.headers.Authorization = `Bearer ${recoveredToken}`;
@@ -51,13 +47,11 @@ export const userDeviceList = async () => {
 };
 
 export const deleteDevice = async (selectedDevice) => {
-  console.log(selectedDevice);
   const recoveredToken = localStorage.getItem("token");
 
   api.defaults.headers.Authorization = `Bearer ${recoveredToken}`;
 
   const teste = await api.delete(`/userDevices/${selectedDevice}`);
-  console.log(teste);
 
   return teste;
 };

@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { userDeviceList, deleteDevice } from "../../services/api";
 import { DeviceCard } from "../../styles";
 import { Loading } from "../Loading/Loading";
-import { Button, Input } from "../../styles";
+import { Button, Input, DeleteButton } from "../../styles";
 import styles from "../UserDevicesList/styles.css";
 import { Swtich } from "../Switch/Swtich";
 import Modal from "react-modal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const UserDevicesList = () => {
   const [userDevicesList, setDevicesList] = useState([]);
@@ -24,7 +26,6 @@ export const UserDevicesList = () => {
   const openAndSet = (device) => {
     setDeviceModal(device);
     openModal();
-    console.log(deviceModal);
   };
 
   useEffect(() => {
@@ -35,16 +36,20 @@ export const UserDevicesList = () => {
     })();
   }, []);
 
+  const showToastMessage = () => {
+    toast.success("Dispositivo deletado!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
   const deleteSelectedDevice = async (id) => {
-    console.log("chamou");
     setLoading(true);
     await deleteDevice(id);
     const refresh = await userDeviceList();
     setDevicesList(refresh.data);
+    showToastMessage();
     setLoading(false);
   };
-
-  console.log(userDevicesList);
 
   return (
     <div>
@@ -62,8 +67,12 @@ export const UserDevicesList = () => {
 
                   <div className="deviceData">
                     <h3>{device.name}</h3>
-
-                    <Swtich />
+                    <div className="switch-delete-buttons">
+                      <Swtich />
+                      <DeleteButton onClick={() => deleteSelectedDevice(_id)}>
+                        Desparear
+                      </DeleteButton>
+                    </div>
 
                     <Button
                       className="details-btn"
@@ -71,6 +80,7 @@ export const UserDevicesList = () => {
                     >
                       Detalhes
                     </Button>
+                    <ToastContainer />
                   </div>
                 </div>
               </li>

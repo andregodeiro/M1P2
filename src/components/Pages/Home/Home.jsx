@@ -9,10 +9,7 @@ export const Home = () => {
     <div>
       <Navbar />
       <WelcomeMessage />
-      <div className="weatherContainer">
-        {" "}
-        <OpenWeather />
-      </div>
+      <div className="weatherContainer"> {/* <OpenWeather /> */}</div>
       <DeviceList>
         <div className="deviceList">
           <UserDevicesList />

@@ -38,7 +38,7 @@ export const SearchBar = ({ children }) => {
 
   // setSearchDevice(filteredDevices);
 
-  console.log(searchDevice); // create a context and set it to setDevices
+  // create a context and set it to setDevices
 
   return (
     <filteredDevicesProvider.Provider value={searchDevice}>

@@ -313,3 +313,14 @@ export const UserProfileCard = styled.div`
     margin-bottom: 30px;
   }
 `;
+
+export const DeleteButton = styled.button`
+  background: #e0e0e0;
+  border-radius: 100px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  border: none;
+  cursor: pointer;
+`;

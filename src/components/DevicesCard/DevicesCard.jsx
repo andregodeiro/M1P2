@@ -6,7 +6,8 @@ import Modal from "react-modal";
 import { AuthenticationContext } from "../Context/Authentication";
 import styles from "../DevicesCard/styles.css";
 import { LoadingBtn } from "../LoadingBtn/LoadingBtn";
-import { filteredDevicesProvider } from "../SearchBar/SearchBar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 Modal.setAppElement("#root");
 
@@ -17,9 +18,6 @@ export const DevicesCard = () => {
   const [deviceModal, setDeviceModal] = useState({});
   const [modalIsOpen, setIsOpen] = useState(false);
   const { user } = useContext(AuthenticationContext);
-  // const { searchDevice } = useContext(filteredDevicesProvider);
-
-  // console.log(searchDevice);
 
   const openModal = () => {
     setIsOpen(true);
@@ -27,6 +25,12 @@ export const DevicesCard = () => {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const showToastMessage = () => {
+    toast.success("Dispositivo pareado!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   const openAndSet = (device) => {
@@ -47,8 +51,6 @@ export const DevicesCard = () => {
   // }
 
   const addDevice = async (device) => {
-    console.log("chamou");
-
     setLoadingBtn(true);
 
     const deviceFormated = {
@@ -58,12 +60,10 @@ export const DevicesCard = () => {
       local: "631b34696f2d2f24a7c0c960",
       room: "Quarto",
     };
-    const teste = await addUserDevice(deviceFormated);
-    console.log(teste);
+    await addUserDevice(deviceFormated);
     setLoadingBtn(false);
+    showToastMessage();
   };
-
-  console.log(devices);
 
   return (
     <div>
@@ -133,6 +133,7 @@ export const DevicesCard = () => {
               >
                 Adicionar{loadingBtn && <LoadingBtn />}
               </Button>
+              <ToastContainer />
               <button className="btn-close-modal" onClick={closeModal}>
                 Fechar
               </button>

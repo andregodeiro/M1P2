@@ -19,17 +19,16 @@ export const OpenWeather = () => {
     })();
   }, []);
 
-  console.log(cityWeather);
-
   return (
     <div className="weather">
       <div className="weatherTile">
         <div className="imgBox"></div>
         <div className="infoBox">
-          <p>º C</p>
+          <h2>{cityWeather.main.temp} ºC</h2>
           <div className="cityData">
-            {/* <h3>{cityWeather.name}</h3> */}
-            <h5>Rio Grande do Norte, Brasil</h5>
+            <h5>
+              {cityWeather.name}, {cityWeather.sys.country}
+            </h5>
           </div>
           <div className="anotherData">
             <div className="humidityData">
@@ -37,9 +36,9 @@ export const OpenWeather = () => {
                 src="https://cdn-icons-png.flaticon.com/512/728/728093.png"
                 alt=""
               />
-              {/* <p>{cityWeather.main.humidity}</p> */}
+              <p>{cityWeather.main.humidity}</p>
             </div>
-            <p>Condições</p>
+            <p></p>
           </div>
         </div>
       </div>

@@ -24,8 +24,6 @@ export const AuthenticationProvider = ({ children }) => {
   const login = async (email, password) => {
     const response = await createSession(email, password);
 
-    console.log("login autenthicated", response.data);
-
     //API criar uma session e retornar user
 
     const loggedUser = response.data.user;
@@ -38,14 +36,12 @@ export const AuthenticationProvider = ({ children }) => {
 
     setUser(loggedUser);
     navigate("/home");
-    console.log(token);
   };
 
   // user == null
   // authenticated = false
 
   const logout = () => {
-    console.log("logout");
     setUser(null);
     localStorage.removeItem("user");
     localStorage.removeItem("token");
