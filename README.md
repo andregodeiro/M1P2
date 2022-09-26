@@ -35,6 +35,10 @@ Tecnologias usadas no projeto:
   
 * https://www.figma.com/file/b3wgvUtojF2nlRcZTNeRw1/M1P2---connetctlab?node-id=0%3A1
 
+<h2>🌐 Deploy</h2>
+
+* https://connectlab-devinhouse.herokuapp.com/
+
 
 
 <h3 align="center"> English version </h3>
@@ -72,3 +76,7 @@ Technologies used in the project:
 <h2>🔖 Figma's Prototype</h2>
   
 * https://www.figma.com/file/b3wgvUtojF2nlRcZTNeRw1/M1P2---connetctlab?node-id=0%3A1
+
+<h2>🌐 Deploy</h2>
+
+* https://connectlab-devinhouse.herokuapp.com/
