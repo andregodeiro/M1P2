@@ -31,7 +31,7 @@ Tecnologias usadas no projeto:
 *   Alertas usando React-Toastify
 
 
-<h2>🔖 Protótipo no Figma
+<h2>🔖 Protótipo no Figma</h2>
   
 * https://www.figma.com/file/b3wgvUtojF2nlRcZTNeRw1/M1P2---connetctlab?node-id=0%3A1
 
@@ -69,6 +69,6 @@ Technologies used in the project:
 *   React
 *   Alerts with React-Toastify
   
-<h2>🔖 Figma's Prototype
+<h2>🔖 Figma's Prototype</h2>
   
 * https://www.figma.com/file/b3wgvUtojF2nlRcZTNeRw1/M1P2---connetctlab?node-id=0%3A1
